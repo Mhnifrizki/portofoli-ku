@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .dark .navbar {
+            background-color: rgba(26, 26, 46, 0.8);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark {
+            --light-color: #1a1a2e;
+            --dark-color: #f8f9fa;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        .dark .card {
+            background-color: #16213e;
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: var(--primary-color);
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: var(--primary-color);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e0e0e0;
+        }
+        
+        .dark .skill-bar {
+            background-color: #2d3748;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Navigation -->
+    <nav class="navbar fixed w-full z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-purple-600 transition">Home</a>
+                    <a href="#about" class="hover:text-purple-600 transition">About</a>
+                    <a href="#skills" class="hover:text-purple-600 transition">Skills</a>
+                    <a href="#projects" class="hover:text-purple-600 transition">Projects</a>
+                    <a href="#contact" class="hover:text-purple-600 transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <!-- Dark mode toggle -->
+                    <div class="flex items-center">
+                        <span class="mr-2 text-sm">Light</span>
+                        <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                            <input type="checkbox" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                            <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                        <span class="text-sm">Dark</span>
+                    </div>
+                    
+                    <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden flex flex-col space-y-2 mt-4" id="mobile-menu">
+                <a href="#home" class="hover:text-purple-600 transition">Home</a>
+                <a href="#about" class="hover:text-purple-600 transition">About</a>
+                <a href="#skills" class="hover:text-purple-600 transition">Skills</a>
+                <a href="#projects" class="hover:text-purple-600 transition">Projects</a>
+                <a href="#contact" class="hover:text-purple-600 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-6 py-16 md:py-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">HALO <span class="gradient-text">CAVERA</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6">PLAYER</h2>
+                    <p class="text-lg mb-8 text-gray-600 dark:text-gray-300">Saya adalah player dari TEAM LIQUID ID Divisi Mobile Legends.</p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-6 py-3 gradient-bg text-white rounded-lg font-medium hover:opacity-90 transition">HERO POWER</a>
+                        <a href="#contact" class="px-6 py-3 border border-purple-600 text-purple-600 dark:text-purple-400 rounded-lg font-medium hover:bg-purple-50 dark:hover:bg-purple-900/20 transition">Contact Me</a>
+                    </div>
+                    
+                    <div class="flex mt-12 space-x-6">
+                        <a href="#" class="text-2xl text-gray-600 dark:text-gray-300 hover:text-purple-600 transition"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-2xl text-gray-600 dark:text-gray-300 hover:text-purple-600 transition"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-2xl text-gray-600 dark:text-gray-300 hover:text-purple-600 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl text-gray-600 dark:text-gray-300 hover:text-purple-600 transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 blur-xl"></div>
+                        <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl">
+                            <img src="https://i.pinimg.com/736x/d1/0e/e7/d10ee73a41b78fc512511e81922abc5e.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-dark-color">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">TENTANG SAYA</h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://profile-images.xing.com/images/dcfed14efa894674765c9a0c085b7d57-1/felix-christopher.1024x1024.jpg" alt="Jane Doe working at her desk with multiple monitors showing code editors and web applications" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 md:pl-12">
+                    <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
+                    </h3>
+                    </p>
+                
+
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div>
+                            <h3 class="font-semibold">Name:</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Muhammad Hanif Risqi Maulana</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Role:</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Exp Lane</p>
+                    </div>
+                    <div>
+                            <h3 class="font-semibold">Nickname:</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Cavera</p>
+                            </div>
+                            <div>
+                            <h3 class="font-semibold">Status Player:</h3>
+                            <p class="text-gray-600 dark:text-gray-300">TEAM Liqiud ID</p>
+                            </div>
+                            <div>
+                            <h3 class="font-semibold">Domisili:</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Jawa Tengah Kendal Plantungan Wadas</p>
+                            </div>
+                            <div>
+                            <h3 class="font-semibold">Usia:</h3>
+                            <p class="text-gray-600 dark:text-gray-300">17 Tahun</p>
+
+                        </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">My Skills</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Technical Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Mechanic</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Makro Play</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Mikro Play</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Shoot Call</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Professional Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Lanening Fast</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Teamwork</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Hero Pool</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Decition Macking</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white dark:bg-dark-color">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">My Hero</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://guide.gg/wp-content/uploads/2024/01/Build-Lapu-Lapu-Mobile-Legends.jpg" alt="E-commerce dashboard showing sales analytics with colorful charts and graphs" class="w-full h-48 object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-purple-600 text-white text-xs font-semibold rounded-full">Hero Pool</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Lapu-Lapu</h3>
+                        <p class="font-semibold dark:text-gray-300 mb-4">Fighter</p> 
+                        <div class="space-y-6"></div>
+                        <div class="flex justify-between mb-2"></div>
+                        <span>Durability</span>
+                        <div class="skill-bar"></div>
+                        <span>Daya Serang</span>
+                        <div class="skill-bar"></div>
+                         <span>Efek Crowd Control</span>
+                        <div class="skill-bar"></div>
+                         <span>Tingkat Kesulitan</span>
+                        <div class="skill-bar"></div>
+                        <div class="skill-progress" style="width: 80%"></div>  
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://cdn.idntimes.com/content-images/community/2024/09/magen-43da29a867d49c1f351ac6b665d26419-5fb5730194fba2adc44fc57e654ae30e_600x400.jpg" alt="Mobile app interface for food delivery service with restaurant listings and order tracking" class="w-full h-48 object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">Hero Pool</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Phoveus</h3>
+                        <p class="font-semibold dark:text-gray-300 mb-4">Fighter.</p>
+                        <div class="flex justify-between mb-2"></div>
+                        <div class="space-y-6"></div>
+                        <div class="flex justify-between mb-2"></div>
+                        <span>Durability</span>
+                        <div class="skill-bar"></div>
+                        <span>Daya Serang</span>
+                        <div class="skill-bar"></div>
+                         <span>Efek Crowd Control</span>
+                        <div class="skill-bar"></div>
+                         <span>Tingkat Kesulitan</span>
+                        <div class="skill-bar"></div>
+                        <div class="skill-progress" style="width: 80%"></div>  
+
+                        </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://mythlok.b-cdn.net/wp-content/uploads/2022/08/Mythlok-Badang-video-game-1024x633.jpg" alt="Social media platform interface with user profiles, news feed and messaging features" class="w-full h-48 object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">Hero Pool</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Badang</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Fighter</p>
+                       <div class="flex justify-between mb-2"></div>
+                        <div class="space-y-6"></div>
+                        <div class="flex justify-between mb-2"></div>
+                        <span>Durability</span>
+                        <div class="skill-bar"></div>
+                        <span>Daya Serang</span>
+                        <div class="skill-bar"></div>
+                         <span>Efek Crowd Control</span>
+                        <div class="skill-bar"></div>
+                         <span>Tingkat Kesulitan</span>
+                        <div class="skill-bar"></div>
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://cdna.artstation.com/p/assets/covers/images/059/508/548/large/hao-cheng-hao-cheng-arlott-f-02-2.jpg?1676539346" alt="Task management web application with draggable kanban boards and team collaboration features" class="w-full h-48 object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-yellow-600 text-white text-xs font-semibold rounded-full">Hero Pool</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Arlot</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Fighter</p>
+                         <div class="flex justify-between mb-2"></div>
+                        <div class="space-y-6"></div>
+                        <div class="flex justify-between mb-2"></div>
+                        <span>Durability</span>
+                        <div class="skill-bar"></div>
+                        <span>Daya Serang</span>
+                        <div class="skill-bar"></div>
+                         <span>Efek Crowd Control</span>
+                        <div class="skill-bar"></div>
+                         <span>Tingkat Kesulitan</span>
+                        <div class="skill-bar"></div>
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://cdn.oneesports.gg/cdn-data/2021/08/MLBB_Gatotkaca.jpg" alt="Cryptocurrency tracker dashboard showing price charts, market trends and portfolio balance" class="w-full h-48 object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-red-600 text-white text-xs font-semibold rounded-full">Hero Pool</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Gatotkaca</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Fighter/Tank.</p>
+                         <div class="flex justify-between mb-2"></div>
+                        <div class="space-y-6"></div>
+                        <div class="flex justify-between mb-2"></div>
+                        <span>Durability</span>
+                        <div class="skill-bar"></div>
+                        <span>Daya Serang</span>
+                        <div class="skill-bar"></div>
+                         <span>Efek Crowd Control</span>
+                        <div class="skill-bar"></div>
+                         <span>Tingkat Kesulitan</span>
+                        <div class="skill-bar"></div>
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://cdn.oneesports.gg/cdn-data/2023/05/MLBB_Benedetta.jpg" alt="Online course platform with video lessons, quizzes and progress tracking dashboard" class="w-full h-48 object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-indigo-600 text-white text-xs font-semibold rounded-full">Hero Pool</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Benedetta</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Assasin/Fighter</p>
+                        <div class="flex justify-between mb-2"></div>
+                        <div class="space-y-6"></div>
+                        <div class="flex justify-between mb-2"></div>
+                        <span>Durability</span>
+                        <div class="skill-bar"></div>
+                        <span>Daya Serang</span>
+                        <div class="skill-bar"></div>
+                         <span>Efek Crowd Control</span>
+                        <div class="skill-bar"></div>
+                         <span>Tingkat Kesulitan</span>
+                        <div class="skill-bar"></div>
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="px-6 py-3 gradient-bg text-white rounded-lg font-medium hover:opacity-90 transition">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Profile/Statistik</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4">Contact Information</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-8">Feel free to reach out to me for any questions or opportunities. I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 text-purple-600 dark:text-purple-400 text-xl mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">location</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Indonesia/Jawa Tengah</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 text-purple-600 dark:text-purple-400 text-xl mt-1">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">ID ACCOUNT</h4>
+                                <p class="text-gray-600 dark:text-gray-300">317387325(9766)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 text-purple-600 dark:text-purple-400 text-xl mt-1">
+                                <img src="https://vignette.wikia.nocookie.net/mobile-legends/images/4/42/Mythical_Glory.png/revision/latest/scale-to-width-down/200?cb=20190912121316" alt="mytical glory logo - red and black emblem with sword and shield" class="w-8 h-8 object-contain" />
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Highest Rank</h4>
+                                <p class="text-gray-600 dark:text-gray-300">200*</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-2xl font-semibold mb-4">Powered BY</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-purple-600 hover:text-white transition">
+                               <img src="https://1.bp.blogspot.com/-X65qRLVNoZA/YLONR1UanlI/AAAAAAAABYw/QnBdm46u_9sDwZOTAKqi4Bps3RHSg0SnwCNcBGAsYHQ/w1200-h630-p-k-no-nu/lowongan-kerja-revival-tv.png" alt="Revival Tv Logo - red and black emblem with sword and shield" class="w-1000 h-1000 object-contain" />
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg- hover:text-white transition">
+                                <img src="https://liquipedia.net/commons/images/thumb/6/63/MPL_Indonesia_2019_allmode.png/600px-MPL_Indonesia_2019_allmode.png" alt="MPL logo - red and black emblem with sword and shield" class="w-1000 h-1000 object-contain" />
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-twitter hover:text-white transition">
+                                <img src="https://seeklogo.com/images/M/moonton-logo-E80B70AB2C-seeklogo.com.png" alt="Monton logo - red and black emblem with sword and shield" class="w-1000 h-1000 object-contain" />
+                            </a>
+                           <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-purple-600 hover:text-white transition">
+                            <img src="https://mobile-legends.net/wp-content/uploads/2025/01/cropped-card-2025-01-14T004329.652.png" alt="Mobile Legends Bang Bang game logo - red and black emblem with sword and shield" class="w-1000 h-1000 object-contain" />
+                                
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block mb-2 font-medium">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-purple-600" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Your Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-purple-600" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block mb-2 font-medium">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-purple-600" placeholder="I'd like to discuss...">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block mb-2 font-medium">Your Message</label>
+                            <textarea id="message" rows="6" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-purple-600" placeholder="Hello, I'm interested in..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="px-6 py-3 gradient-bg text-white rounded-lg font-medium hover:opacity-90 transition w-full">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 bg-white dark:bg-dark-color border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-600 dark:text-gray-300">&copy; 2023 Jane Doe. All rights reserved.</p>
+                </div>
+                
+                <div>
+                    <button class="px-4 py-2 gradient-bg text-white rounded-lg text-sm hover:opacity-90 transition" id="back-to-top">
+                        Back to Top <i class="fas fa-arrow-up ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Dark mode toggle
+        const toggle = document.getElementById('toggle');
+        const toggleLabel = document.querySelector('.toggle-label');
+        const html = document.querySelector('html');
+        
+        // Check for saved user preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            html.classList.add('dark');
+            toggle.checked = true;
+        }
+        
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                html.classList.add('dark');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                mobileMenu.classList.add('hidden');
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('md:block');
+                backToTopButton.classList.remove('md:hidden');
+            } else {
+                backToTopButton.classList.add('md:hidden');
+                backToTopButton.classList.remove('md:block');
+            }
+        });
+    </script>
+</body>
+</html>
